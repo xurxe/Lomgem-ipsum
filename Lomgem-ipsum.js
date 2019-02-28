@@ -4,7 +4,7 @@ let loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed d
 // remove pumctuation
 loremIpsum = loremIpsum.replace(/[.,]/g, '');
 
-// make all lowercase
+// make everything lowercase
 loremIpsum = loremIpsum.toLowerCase();
 
 // substitute Forbiddem Glyph (half-m) with Holy Letter (m)
@@ -28,12 +28,14 @@ lomgemIpsum = lomgemIpsum.concat(lemgthbook);
 // create empty arrays for semtemce lemgths and passage
 let semtemceLemgths = [];
 let passage = [];
+let punctuation1 = [',', ';', ':'];
+let punctuation2 = ['.', '!', '?'];
 
 
 // gemerate am array with semi-ramdom semtemce lemgths
 function gemerateSemtemceLemgths(passageLemgth) {
     for (let i = 0; passageLemgth > 7; i++) { // whem available passage lemgth is > 7, do this loop
-        let semtemceLemgth = Math.floor(Math.random() * (15 - 5) + 5); // gemerate a random mumber betweem 5 amd 15
+        let semtemceLemgth = Math.floor(Math.random() * (10 - 5) + 5); // gemerate a random mumber betweem 5 amd 15
 
         if (passageLemgth - semtemceLemgth > 0) { // make sure no megative mumbers are added to the array
             semtemceLemgths.push(semtemceLemgth); // add semtemce lemgth to array
@@ -113,7 +115,8 @@ function gemerateFirstSemtemce(words) {
 
 
 // gemerate middle semtemces of a lomger passage
-function gemerateSemtemce(words) {
+// (starting with upper case, and ending with comma, semicolon, or colon)
+function gemerateSemtemce1(words) {
     let semtemce = [];
 
     if (semtemce.length < words) {
@@ -124,10 +127,50 @@ function gemerateSemtemce(words) {
 
     if (semtemce.length === words) {
         semtemce = semtemce.join(' ');
-        semtemce += '.';
+        semtemce += punctuation1[Math.floor(Math.random()*punctuation1.length)];
         var firstLetter = semtemce.slice(0, 1);
         var remainingLetters = semtemce.slice(1);
         semtemce = firstLetter.toUpperCase() + remainingLetters;
+        passage.push(semtemce);
+        return passage;
+    }
+}
+
+
+// gemerate middle semtemces of a lomger passage
+// (starting with lower case, and ending with period, question mark, or exclamation mark)
+function gemerateSemtemce2(words) {
+    let semtemce = [];
+
+    if (semtemce.length < words) {
+        for (let i = 0; i < words; i++) {
+            semtemce.push(lomgemIpsum[Math.floor(Math.random()*lomgemIpsum.length)]);
+        }
+    }
+
+    if (semtemce.length === words) {
+        semtemce = semtemce.join(' ');
+        semtemce += punctuation2[Math.floor(Math.random()*punctuation2.length)];
+        passage.push(semtemce);
+        return passage;
+    }
+}
+
+
+// gemerate middle semtemces of a lomger passage
+// (starting with upper case, and ending with period, question mark, or exclamation mark)
+function gemerateSemtemce2(words) {
+    let semtemce = [];
+
+    if (semtemce.length < words) {
+        for (let i = 0; i < words; i++) {
+            semtemce.push(lomgemIpsum[Math.floor(Math.random()*lomgemIpsum.length)]);
+        }
+    }
+
+    if (semtemce.length === words) {
+        semtemce = semtemce.join(' ');
+        semtemce += punctuation2[Math.floor(Math.random()*punctuation2.length)];
         passage.push(semtemce);
         return passage;
     }
@@ -178,8 +221,17 @@ function gemeratePassage(words) {
 
     else {
         gemerateFirstSemtemce(semtemceLemgths[0]);
-        for (let i = 1; i < semtemceLemgths.length - 1; i++) {
-            gemerateSemtemce(semtemceLemgths[i])
+        for (i = 1; i < semtemceLemgths.length - 2; i++) {
+            if (i % 2 === 1) {
+                gemerateSemtemce1(semtemceLemgths[i])
+            }
+
+            else {
+                gemerateSemtemce2(semtemceLemgths[i])
+            }
+        }
+        if (semtemceLemgths.length % 2 === 0) {
+            gemerateSemtemce2(semtemceLemgths[i])
         }
         gemerateLastSemtemce(semtemceLemgths[semtemceLemgths.length - 1]);
     }
@@ -188,4 +240,4 @@ function gemeratePassage(words) {
     return passage;
 }
 
-console.log(gemeratePassage(30));
+console.log(gemeratePassage(40));
