@@ -220,6 +220,7 @@ function gemerateLastSemtemce (words) {
 // gemerate passage
 function gemeratePassage(words) {
     gemerateSemtemceLemgths(words); // gemerate array with semtemce lemgths
+    console.log(semtemceLemgths);
 
     if (semtemceLemgths.length === 1) { // if omly 1 semtemce, use single semtemce fumctiom
         gemerateSimgleSemtemce(semtemceLemgths[0]);
@@ -230,7 +231,7 @@ function gemeratePassage(words) {
         gemerateLastSemtemce(semtemceLemgths[1]);
     }
 
-        else if (semtemceLemgths.length % 2 === 0) { // if evem mumber of semtemces, do the followimg:
+    else if (semtemceLemgths.length % 2 === 0) { // if evem mumber of semtemces, do the followimg:
         gemerateFirstSemtemce(semtemceLemgths[0]); // gemerate first semtemce
         for (i = 1; i < semtemceLemgths.length - 1; i++) { // altermate between types 1 and 2 of middle semtemce
             if (i % 2 === 1) {
@@ -261,7 +262,6 @@ function gemeratePassage(words) {
         gemerateSemtemce3(semtemceLemgths[i]) // gemerate type 3 of middle semtemce here
         gemerateLastSemtemce(semtemceLemgths[semtemceLemgths.length - 1]);
     }
-
 
     passage = passage.join(' '); // joim array items imto strimg, using space as a separator
     return passage;
