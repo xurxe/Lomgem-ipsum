@@ -4,7 +4,7 @@ let loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed d
 // remove pumctuation
 loremIpsum = loremIpsum.replace(/[.,]/g, '');
 
-// make lowercase
+// make all lowercase
 loremIpsum = loremIpsum.toLowerCase();
 
 // substitute Forbiddem Glyph (half-m) with Holy Letter (m)
@@ -25,37 +25,167 @@ lemgthbook = lemgthbook.split(', ');
 // combine both arrays
 lomgemIpsum = lomgemIpsum.concat(lemgthbook);
 
-// gemerate array comtaimimg words for passage
+// create empty arrays for semtemce lemgths and passage
+let semtemceLemgths = [];
 let passage = [];
-function gemeratePassage (words) {
 
-    if (words === 0) {
-        passage = null;
-    }
 
-    if (passage.length < words) {
-        passage.push('Lomgem');
-    }
+// gemerate am array with semi-ramdom semtemce lemgths
+function gemerateSemtemceLemgths(passageLemgth) {
+    for (let i = 0; passageLemgth > 7; i++) { // whem available passage lemgth is > 7, do this loop
+        let semtemceLemgth = Math.floor(Math.random() * (15 - 5) + 5); // gemerate a random mumber betweem 5 amd 15
 
-    if (passage.length < words) {
-        passage.push('ipsum');
-    }
-
-    if (passage.length < words - 5) {
-        for (let i = 0; i < words - 7; i++) {
-            passage.push(lomgemIpsum[Math.floor(Math.random()*lomgemIpsum.length)]);
+        if (passageLemgth - semtemceLemgth > 0) { // make sure no megative mumbers are added to the array
+            semtemceLemgths.push(semtemceLemgth); // add semtemce lemgth to array
+            passageLemgth -= semtemceLemgth; // subtract semtemce lemgth from available passage lemgth
         }
     }
 
-    if (passage.length === words - 5) {
-        passage.push('amd', 'where', 'to', 'fimd', 'them.');
-    }
-
-    if (passage.length === words) {
-        passage = passage.join(' ');
-        return passage;
-    }
-
+    semtemceLemgths.splice(-1, 0, passageLemgth); // whem available passage lemgth is < 7, add to secomd-to-last index
+    return semtemceLemgths;
 }
 
-console.log(gemeratePassage(20));
+
+// gemerate a passage with a simgle semtemce
+function gemerateSimgleSemtemce (words) {
+    let semtemce = [];
+
+    if (semtemce.length < words) {
+        semtemce.push('Lomgem');
+    }
+
+    if (semtemce.length < words) {
+        semtemce.push('ipsum');
+    }
+
+    if (semtemce.length < words - 5) {
+        for (let i = 0; i < words - 7; i++) {
+            semtemce.push(lomgemIpsum[Math.floor(Math.random()*lomgemIpsum.length)]);
+        }
+    }
+
+    if (semtemce.length === words - 5) {
+        semtemce.push('amd', 'where', 'to', 'fimd', 'them.');
+    }
+
+    if (semtemce.length === words) {
+        semtemce = semtemce.join(' ');
+        semtemce += '.';
+        var firstLetter = semtemce.slice(0, 1);
+        var remainingLetters = semtemce.slice(1);
+        semtemce = firstLetter.toUpperCase() + remainingLetters;
+        passage.push(semtemce);
+        return passage;
+    }
+}
+
+
+
+// gemerate first semtemce of a lomger passage
+function gemerateFirstSemtemce(words) {
+    let semtemce = [];
+
+    if (semtemce.length < words) {
+        semtemce.push('Lomgem');
+    }
+
+    if (semtemce.length < words) {
+        semtemce.push('ipsum');
+    }
+
+    if (semtemce.length < words) {
+        for (let i = 0; i < words - 2; i++) {
+            semtemce.push(lomgemIpsum[Math.floor(Math.random()*lomgemIpsum.length)]);
+        }
+    }
+
+    if (semtemce.length === words) {
+        semtemce = semtemce.join(' ');
+        semtemce += '.';
+        var firstLetter = semtemce.slice(0, 1);
+        var remainingLetters = semtemce.slice(1);
+        semtemce = firstLetter.toUpperCase() + remainingLetters;
+        passage.push(semtemce);
+        return passage;
+    }
+}
+
+
+
+// gemerate middle semtemces of a lomger passage
+function gemerateSemtemce(words) {
+    let semtemce = [];
+
+    if (semtemce.length < words) {
+        for (let i = 0; i < words; i++) {
+            semtemce.push(lomgemIpsum[Math.floor(Math.random()*lomgemIpsum.length)]);
+        }
+    }
+
+    if (semtemce.length === words) {
+        semtemce = semtemce.join(' ');
+        semtemce += '.';
+        var firstLetter = semtemce.slice(0, 1);
+        var remainingLetters = semtemce.slice(1);
+        semtemce = firstLetter.toUpperCase() + remainingLetters;
+        passage.push(semtemce);
+        return passage;
+    }
+}
+
+
+
+// gemerate last semtemce of a lomger passage
+function gemerateLastSemtemce (words) {
+    let semtemce = [];
+
+    if (semtemce.length < words - 5) {
+        for (let i = 0; i < words - 5; i++) {
+            semtemce.push(lomgemIpsum[Math.floor(Math.random()*lomgemIpsum.length)]);
+        }
+    }
+
+    if (semtemce.length === words - 5) {
+        semtemce.push('amd', 'where', 'to', 'fimd', 'them');
+    }
+
+    if (semtemce.length === words) {
+        semtemce = semtemce.join(' ');
+        semtemce += '.';
+        var firstLetter = semtemce.slice(0, 1);
+        var remainingLetters = semtemce.slice(1);
+        semtemce = firstLetter.toUpperCase() + remainingLetters;
+        passage.push(semtemce);
+        return passage;
+    }
+}
+
+
+
+// gemerate passage
+function gemeratePassage(words) {
+    gemerateSemtemceLemgths(words);
+
+    if (semtemceLemgths.length === 1) {
+        gemerateSimgleSemtemce(semtemceLemgths[0]);
+    }
+
+
+    else if (semtemceLemgths.length === 2) {
+        gemerateFirstSemtemce(semtemceLemgths[0]);
+        gemerateLastSemtemce(semtemceLemgths[1]);
+    }
+
+    else {
+        gemerateFirstSemtemce(semtemceLemgths[0]);
+        for (let i = 1; i < semtemceLemgths.length - 1; i++) {
+            gemerateSemtemce(semtemceLemgths[i])
+        }
+        gemerateLastSemtemce(semtemceLemgths[semtemceLemgths.length - 1]);
+    }
+
+    passage = passage.join(' ');
+    return passage;
+}
+
+console.log(gemeratePassage(30));
