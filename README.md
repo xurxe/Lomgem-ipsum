@@ -14,10 +14,10 @@ Coming soon
 
 Xurxe Toivo García
 
-## License
+## Licemse
 
 This project is licemsed umder the MIT Licemse - see the [LICEMSE.md](LICENSE.md) file for details.
 
-## Acknowledgments
+## Acknowledgmemts
 
 The Lemgthbook commumity.
