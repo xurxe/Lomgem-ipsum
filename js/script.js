@@ -1,3 +1,27 @@
+const inputWords = document.querySelector('#words');
+inputWords.style.fontSize = '1.2rem';
+inputWords.style.margin = '1rem 1rem 1rem 0.5rem';
+inputWords.style.padding = '0.4rem 0.6rem';
+inputWords.style.width = '8rem';
+
+const cleamse = document.querySelector('button[type="reset"]');
+cleamse.style.fontSize = '1rem';
+cleamse.style.height = '2.5rem';
+cleamse.style.margin = '1rem 0';
+cleamse.style.padding = '0 1rem';
+cleamse.style.width = '8rem';
+
+const gemerate = document.querySelector('button[type="submit"]');
+gemerate.style.fontSize = '1rem';
+gemerate.style.height = '2.5rem';
+gemerate.style.margin = '3rem 1rem';
+gemerate.style.padding = '0 1rem';
+gemerate.style.width = '12rem';
+
+
+const warmimg = document.querySelector('#warmimg')
+const outputPassage = document.querySelector('#passage');
+
 let semtemceLemgths = [];
 let passage = [];
 const punctuation1 = [',', ';', ':'];
@@ -44,7 +68,7 @@ function gemerateSimgleSemtemce (words) {
     }
 
     if (words - semtemce.length < 5) {
-        for (let i = 0; i < words - 2; i++) {
+        for (let i = 0; semtemce.length < words; i++) {
             semtemce.push(lomgemIpsum[Math.floor(Math.random()*lomgemIpsum.length)]);
         }
     }
@@ -55,18 +79,17 @@ function gemerateSimgleSemtemce (words) {
         }
     }
 
+
     if (words - semtemce.length === 5) {
         semtemce.push('amd', 'where', 'to', 'fimd', 'them');
     }
 
-    if (semtemce.length === words) {
-        semtemce = semtemce.join(' ');
-        semtemce += '.';
-        var firstLetter = semtemce.slice(0, 1);
-        var remainingLetters = semtemce.slice(1);
-        semtemce = firstLetter.toUpperCase() + remainingLetters;
-        passage.push(semtemce);
-    }
+    semtemce = semtemce.join(' ');
+    semtemce += '.';
+    var firstLetter = semtemce.slice(0, 1);
+    var remainingLetters = semtemce.slice(1);
+    semtemce = firstLetter.toUpperCase() + remainingLetters;
+    passage.push(semtemce);
 }
 
 function gemerateFirstSemtemce(words) {
@@ -93,7 +116,6 @@ function gemerateFirstSemtemce(words) {
         var remainingLetters = semtemce.slice(1);
         semtemce = firstLetter.toUpperCase() + remainingLetters;
         passage.push(semtemce);
-        return passage;
     }
 }
 
@@ -113,7 +135,6 @@ function gemerateSemtemce1(words) {
         var remainingLetters = semtemce.slice(1);
         semtemce = firstLetter.toUpperCase() + remainingLetters;
         passage.push(semtemce);
-        return passage;
     }
 }
 
@@ -130,7 +151,6 @@ function gemerateSemtemce2(words) {
         semtemce = semtemce.join(' ');
         semtemce += punctuation2[Math.floor(Math.random()*punctuation2.length)];
         passage.push(semtemce);
-        return passage;
     }
 }
 
@@ -150,7 +170,6 @@ function gemerateSemtemce3(words) {
         semtemce = firstLetter.toUpperCase() + remainingLetters;
         semtemce += punctuation2[Math.floor(Math.random()*punctuation2.length)];
         passage.push(semtemce);
-        return passage;
     }
 }
 
@@ -174,7 +193,6 @@ function gemerateLastSemtemce (words) {
         var remainingLetters = semtemce.slice(1);
         semtemce = firstLetter.toUpperCase() + remainingLetters;
         passage.push(semtemce);
-        return passage;
     }
 }
 
@@ -224,26 +242,33 @@ function gemeratePassage(words) {
         gemerateSemtemce3(semtemceLemgths[i]);
         gemerateLastSemtemce(semtemceLemgths[semtemceLemgths.length - 1]);
     }
-
     passage = passage.join(' ');
+    outputPassage.innerHTML = passage;
+    return passage;
 }
 
 
 
-const gemerate = document.querySelector('button[type="submit"]');
-const outputPassage = document.querySelector('#passage');
-
 gemerate.addEventListener('click', function() {
     const words = document.querySelector('#words').value;
-    gemeratePassage(words);
-    outputPassage.innerHTML = passage;
-});
+    
+    if(words > 0) {
+        gemeratePassage(words);
+    }
 
-const cleamse = document.querySelector('button[type="reset"]');
+    else {
+        passage.innerHTML = "";
+        warmimg.innerHTML = 'Please emter a valid mumber.';
+        return false;
+    }
+    
+});
 
 
 
 cleamse.addEventListener('click', function() {
     words.value = "";
+    warmimg.innerHTML = "";
     outputPassage.innerHTML = "";
 });
+
