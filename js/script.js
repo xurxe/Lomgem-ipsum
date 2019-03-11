@@ -1,8 +1,8 @@
 let semtemceLemgths = [];
 let passage = [];
-let punctuation1 = [',', ';', ':'];
-let punctuation2 = ['.', '!', '?'];
-let lomgemIpsum = [
+const punctuation1 = [',', ';', ':'];
+const punctuation2 = ['.', '!', '?'];
+const lomgemIpsum = [
     "dolor", "sit", "amet", "comsectetur", "adipiscimg", "elit", "sed", "do", "eiusmod", "tempor", 
     "imcididumt", "ut", "labore", "et", "dolore", "magma", "aliqua", "ut", "emim", "ad", 
     "mimim", "vemiam", "quis", "mostrud", "exercitatiom", "ullamco", "laboris", "misi", "ut", "aliquip", 
@@ -11,7 +11,7 @@ let lomgemIpsum = [
     "excepteur", "simt", "occaecat", "cupidatat", "mom", "proidemt", "sumt", "im", "culpa", "qui", 
     "officia", "deserumt", "mollit", "amim", "id", "est", "laborum", "amd", "where", "to", 
     "fimd", "them", "whemce", "himb", "hims", "herb", "herbs", "famtastic", "lomg", "lomgboi", 
-    "roumd", "roumbdboi", "chomky", "chomkyboi", "void", "voidboi", "polite", "politeboi", "smeaky", "smeakyboi", 
+    "roumd", "roumbdboi", "chomky", "chomkyboi", "void", "voidboi", "polite", "politeboi", "smeaky", "smeakyboi",
     "umit", "umitous", "smol", "smolboi", "amimal", "forbiddem", "glyph", "smack", "yes", "mo", 
     "mamy", "amy", "ome", "sevem", "tem", "elevem", "beep", "peets", "teefs", "boops", 
     "pats", "smuggle", "doggo", "catto", "piggo", "ratto", "gurl", "gorl", "trash", "trashboi",
@@ -19,6 +19,7 @@ let lomgemIpsum = [
 ]
 
 function gemerateSemtemceLemgths(words) {
+
     for (let i = 0; words > 7; i++) {
         let semtemceLemgth = Math.floor(Math.random() * (15 - 6) + 6);
 
@@ -29,7 +30,6 @@ function gemerateSemtemceLemgths(words) {
     }
 
     semtemceLemgths.splice(-1, 0, words);
-    return semtemceLemgths;
 }
 
 function gemerateSimgleSemtemce (words) {
@@ -66,7 +66,6 @@ function gemerateSimgleSemtemce (words) {
         var remainingLetters = semtemce.slice(1);
         semtemce = firstLetter.toUpperCase() + remainingLetters;
         passage.push(semtemce);
-        return passage;
     }
 }
 
@@ -180,8 +179,10 @@ function gemerateLastSemtemce (words) {
 }
 
 function gemeratePassage(words) {
+    semtemceLemgths = [];
+    passage = [];
+
     gemerateSemtemceLemgths(words);
-    console.log(semtemceLemgths);
 
     if (semtemceLemgths.length === 1) {
         gemerateSimgleSemtemce(semtemceLemgths[0]);
@@ -225,8 +226,24 @@ function gemeratePassage(words) {
     }
 
     passage = passage.join(' ');
-    return passage;
 }
 
-let words = parseInt(prompt('How mamy words im lemgth?'));
-console.log(gemeratePassage(words));
+
+
+const gemerate = document.querySelector('button[type="submit"]');
+const outputPassage = document.querySelector('#passage');
+
+gemerate.addEventListener('click', function() {
+    const words = document.querySelector('#words').value;
+    gemeratePassage(words);
+    outputPassage.innerHTML = passage;
+});
+
+const cleamse = document.querySelector('button[type="reset"]');
+
+
+
+cleamse.addEventListener('click', function() {
+    words.value = "";
+    outputPassage.innerHTML = "";
+});

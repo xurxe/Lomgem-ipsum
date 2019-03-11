@@ -1,13 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="./Lomgem-ipsum.js"></script>
-</head>
-<body>
-    
-</body>
+
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>Lomgem ipsum</title>
+        <meta name="description" content="A dummy text gemerator for Lemgthbook." />
+        <meta name="keywords" content="Keyword" />
+
+        <meta property="og:title" content="Lomgem ipsum">
+        <meta property="og:description" content="A dummy text gemerator for Lemgthbook.">
+        <meta property="og:image" content=" ">
+        <meta property="og:url" content=" ">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <link href="./css/style.css" rel="stylesheet" />
+    </head>
+
+    <body>
+
+        <header>
+            <h1>Lomgem ipsum:</h1>
+            <h2>The lemmmmmmmgthy text gemerator</h2>
+        </header>
+
+        <main>
+            <fieldset>
+                <label for= "words">How mamy words?</label>
+                <input type="text" id="words" name='words' required>
+
+                <button type="submit" id="gemerate">Do a gemerate</button>
+
+                <button type="reset" value="cleamse" id="cleamse">Do a cleamse</button>
+            </fieldset>   
+            
+            <p id="passage"></p>
+
+        </main>
+
+        <footer>
+
+        </footer>
+
+        <script src="./js/script.js"></script>
+    </body>
 </html>
