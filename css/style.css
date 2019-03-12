@@ -1,4 +1,4 @@
-/* GENERAL ************************************************************************************************** */
+/* GENERAL ***************************************************************** */
 
 * {
     box-sizing: border-box;
@@ -12,8 +12,7 @@
 
 
 
-
-/* TYPOGRAPHY ************************************************************************************************ */
+/* TYPOGRAPHY ************************************************************** */
 
 html {
     font-size: 18px;
@@ -23,14 +22,27 @@ h1 {
     font-size: 6rem;
 }
 
+@media only screen and (min-width: 300px) and (max-width: 600px) {
+    h1 {
+        font-size: calc(48px + (96 - 48) * (100vw - 300px) / (600 - 300));
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    h1 {
+        font-size: 3rem;
+    }
+}
+
 h2 {
     font-size: 1.5rem;
-    padding: 1rem 0;
+    padding: 2rem 0 1rem;
 }
 
 #warmimg {
     color: 	#3b5998;
-    margin: 1rem 0;
+    height: 3.5rem;
+    padding: 1rem 0;
 }
 
 #passage {
@@ -40,7 +52,7 @@ h2 {
 
 
 
-/* SECTIONS ************************************************************************************************* */
+/* HEADER **************************************************************** */
 
 header {
     background-color: #3b5998;
@@ -50,13 +62,30 @@ header {
     -moz-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -o-font-smoothing: antialiased;
-    padding: 2rem 1rem;
-    height: 15rem;
+    padding: 2rem;
 }
+
+
+
+/* MAIN **************************************************************** */
 
 main {
     padding: 2rem 12rem;
     min-height: 80vh;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+    main {
+        padding-right: calc(32px + (192 - 32) * (100vw - 600px) / (900 - 600));
+        padding-left: calc(16px + (192 - 16) * (100vw - 600px) / (900 - 600));
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        padding-right: 2rem;
+        padding-left: 1rem;
+    }
 }
 
 fieldset {
@@ -72,6 +101,7 @@ input[type="text"] {
     outline: none;
     border: 1px solid #3b5998;
     color: #3b5998;
+    width: 8rem;
 }
 
 input[type="text"]::placeholder {
@@ -82,6 +112,7 @@ button[type="reset"] {
     border: 1px solid #3b5998;
     color: #3b5998;
     outline: none;
+    width: 8rem;
 }
 
 button[type="submit"] {
@@ -93,7 +124,27 @@ button[type="submit"] {
     -moz-osx-font-smoothing: grayscale;
     -o-font-smoothing: antialiased;
     outline: none;
+    width: 12rem;
 }
+
+input:focus, input:hover, button:focus, button:hover {
+    outline: 2px solid #3b5998;
+}
+
+@media only screen and (max-width: 500px) {
+    input[type="text"], button[type="reset"], button[type="submit"] {
+        width: 100%;
+    }
+}
+
+#passage {
+    margin: 2rem 0;
+    padding: 0.7rem 1rem;
+}
+
+
+
+/* FOOTER **************************************************************** */
 
 footer {
     background-color: #3b5998;

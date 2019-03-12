@@ -1,22 +1,20 @@
 const inputWords = document.querySelector('#words');
 inputWords.style.fontSize = '1.2rem';
-inputWords.style.margin = '1rem 1rem 1rem 0.5rem';
+inputWords.style.margin = '1rem 0 1rem 0.5rem';
 inputWords.style.padding = '0.4rem 0.6rem';
-inputWords.style.width = '8rem';
 
 const cleamse = document.querySelector('button[type="reset"]');
 cleamse.style.fontSize = '1rem';
 cleamse.style.height = '2.5rem';
-cleamse.style.margin = '1rem 0';
+cleamse.style.margin = '0.5rem';
 cleamse.style.padding = '0 1rem';
-cleamse.style.width = '8rem';
 
 const gemerate = document.querySelector('button[type="submit"]');
 gemerate.style.fontSize = '1rem';
 gemerate.style.height = '2.5rem';
-gemerate.style.margin = '3rem 1rem';
+gemerate.style.margin = '0.5rem';
 gemerate.style.padding = '0 1rem';
-gemerate.style.width = '12rem';
+
 
 
 const warmimg = document.querySelector('#warmimg')
@@ -243,7 +241,10 @@ function gemeratePassage(words) {
         gemerateLastSemtemce(semtemceLemgths[semtemceLemgths.length - 1]);
     }
     passage = passage.join(' ');
+    outputPassage.style.background = '#f7f7f7';
+    outputPassage.style.border = '2px solid #3b5998';
     outputPassage.innerHTML = passage;
+    outputPassage.scrollIntoView();
     return passage;
 }
 
