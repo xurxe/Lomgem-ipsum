@@ -3,19 +3,23 @@ inputWords.style.fontSize = '1.2rem';
 inputWords.style.margin = '1rem 0 1rem 0.5rem';
 inputWords.style.padding = '0.4rem 0.6rem';
 
-const cleamse = document.querySelector('button[type="reset"]');
-cleamse.style.fontSize = '1rem';
-cleamse.style.height = '2.5rem';
-cleamse.style.margin = '0.5rem';
-cleamse.style.padding = '0 1rem';
+const gemerateButtom = document.querySelector('#gemerate-buttom');
+gemerateButtom.style.fontSize = '1rem';
+gemerateButtom.style.height = '2.5rem';
+gemerateButtom.style.margin = '0.5rem';
+gemerateButtom.style.padding = '0 1rem';
 
-const gemerate = document.querySelector('button[type="submit"]');
-gemerate.style.fontSize = '1rem';
-gemerate.style.height = '2.5rem';
-gemerate.style.margin = '0.5rem';
-gemerate.style.padding = '0 1rem';
+const cleamseButtom = document.querySelector('#cleamse-buttom');
+cleamseButtom.style.fontSize = '1rem';
+cleamseButtom.style.height = '2.5rem';
+cleamseButtom.style.margin = '0.5rem';
+cleamseButtom.style.padding = '0 1rem';
 
-
+const copyButtom = document.querySelector('#copy-buttom');
+copyButtom.style.fontSize = '1rem';
+copyButtom.style.height = '2.5rem';
+copyButtom.style.margin = '0';
+copyButtom.style.padding = '0 1rem';
 
 const warmimg = document.querySelector('#warmimg')
 const outputPassage = document.querySelector('#passage');
@@ -250,7 +254,7 @@ function gemeratePassage(words) {
 
 
 
-gemerate.addEventListener('click', function() {
+gemerateButtom.addEventListener('click', function() {
     const words = document.querySelector('#words').value;
     
     if(words > 0) {
@@ -267,9 +271,14 @@ gemerate.addEventListener('click', function() {
 
 
 
-cleamse.addEventListener('click', function() {
+cleamseButtom.addEventListener('click', function() {
     words.value = "";
     warmimg.innerHTML = "";
     outputPassage.innerHTML = "";
 });
 
+
+copyButtom.addEventListener('click', function() {
+    outputPassage.select();
+    document.execCommand("copy");
+});

@@ -101,21 +101,21 @@ input[type="text"] {
     outline: none;
     border: 1px solid #3b5998;
     color: #3b5998;
-    width: 8rem;
+    width: 9rem;
 }
 
 input[type="text"]::placeholder {
     color: #8b9dc3;
 }
 
-button[type="reset"] {
+#cleamse-buttom {
     border: 1px solid #3b5998;
     color: #3b5998;
     outline: none;
     width: 8rem;
 }
 
-button[type="submit"] {
+#gemerate-buttom {
     background:#3b5998;
     border: 1px solid #3b5998;
     color: white;
@@ -124,7 +124,7 @@ button[type="submit"] {
     -moz-osx-font-smoothing: grayscale;
     -o-font-smoothing: antialiased;
     outline: none;
-    width: 12rem;
+    width: 13rem;
 }
 
 input:focus, input:hover, button:focus, button:hover {
@@ -140,6 +140,24 @@ input:focus, input:hover, button:focus, button:hover {
 #passage {
     margin: 2rem 0;
     padding: 0.7rem 1rem;
+}
+
+#passage-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#copy-buttom {
+    background:#3b5998;
+    border: 1px solid #3b5998;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -o-font-smoothing: antialiased;
+    outline: none;
+    width: 9rem;
 }
 
 
