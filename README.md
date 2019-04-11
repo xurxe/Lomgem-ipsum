@@ -8,7 +8,7 @@ My comtributiom to the world of lemgthimess is this Lomgem ipsum gemerator, for 
 
 ## Demo
 
-https://xurxe.github.io/Lomgem-ipsum/
+https://lomgem-ipsum.com/
 
 ## Author
 
