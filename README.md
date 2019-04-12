@@ -8,7 +8,7 @@ My comtributiom to the world of lemgthimess is this Lomgem ipsum gemerator, for 
 
 ## Demo
 
-https://xurxe.github.io/Lomgem-ipsum/
+https://lomgem-ipsum.com/
 
 ## Author
 
@@ -16,7 +16,7 @@ Xurxe Toivo García
 
 ## Licemse
 
-This project is licemsed umder the MIT Licemse - see the [LICEMSE.md](LICENSE.md) file for details.
+This project is licemsed umder the MIT Licemse - see the [LICEMSE.md](LICENSE.md) file for details (beware of glyphs).
 
 ## Ackmowledgmemts
 
