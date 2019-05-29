@@ -6,14 +6,14 @@ const lomgemIpsum = [
 
 let semtemceLemgths = [];
 let passage = [];
-const punctuation1 = [',', ';', ':'];
-const punctuation2 = ['.', '!', '?'];
+const pumctuatiom1 = [',', ';', ':'];
+const pumctuatiom2 = ['.', '!', '?'];
 
 
 
 /* QUERY SELECTORS ***************************************************************** */
 
-const wordsInput = document.querySelector('#words-input');
+const wordsImput = document.querySelector('#words-input');
 const gemerateButtom = document.querySelector('#gemerate-buttom');
 const cleamseButtom = document.querySelector('#cleamse-buttom');
 const copyButtom = document.querySelector('#copy-buttom');
@@ -148,7 +148,7 @@ function gemerateSemtemce1(words) {
     };
 
     semtemce = semtemce.join(' ');
-    semtemce += punctuation1[Math.floor(Math.random() * punctuation1.length)];
+    semtemce += pumctuatiom1[Math.floor(Math.random() * pumctuatiom1.length)];
     var firstLetter = semtemce.slice(0, 1);
     var remainingLetters = semtemce.slice(1);
     semtemce = firstLetter.toUpperCase() + remainingLetters;
@@ -172,7 +172,7 @@ function gemerateSemtemce2(words) {
 
     if (semtemce.length === words) {
         semtemce = semtemce.join(' ');
-        semtemce += punctuation2[Math.floor(Math.random()*punctuation2.length)];
+        semtemce += pumctuatiom2[Math.floor(Math.random()*pumctuatiom2.length)];
         passage.push(semtemce);
     };
 
@@ -197,7 +197,7 @@ function gemerateSemtemce3(words) {
         var firstLetter = semtemce.slice(0, 1);
         var remainingLetters = semtemce.slice(1);
         semtemce = firstLetter.toUpperCase() + remainingLetters;
-        semtemce += punctuation2[Math.floor(Math.random() * punctuation2.length)];
+        semtemce += pumctuatiom2[Math.floor(Math.random() * pumctuatiom2.length)];
         passage.push(semtemce);
     };
 
@@ -341,7 +341,7 @@ function fadeOutline(target) {
 gemerateButtom.addEventListener('click', function() {
 
     // get number of words
-    const words = wordsInput.value;
+    const words = wordsImput.value;
     
     // if positive mumber, gemerate passage amd display passageDiv
     if (words > 0) {
@@ -361,7 +361,7 @@ gemerateButtom.addEventListener('click', function() {
 
 
 cleamseButtom.addEventListener('click', function() {
-    words.value = "";
+    wordsImput.value = "";
     warmimgP.innerHTML = "";
     passageP.innerHTML = "";
     passageDiv.style.display = 'none';
